@@ -1,6 +1,8 @@
 import kotlin.system.measureTimeMillis
 
 fun main() {
+    val day = "Day"
+
     fun part1(input: List<String>): Int {
         return input.size
     }
@@ -9,9 +11,9 @@ fun main() {
         return input.size
     }
 
-    val testInput = readInput("Day_test")
+    val testInput = readInput(day + "_test")
 
-    val input = readInput("Day")
+    val input = readInput(day)
     var result: Any
 
     println("Test 1 solved in ${measureTimeMillis { result = part1(testInput) }}ms with result: $result, expected: ")
