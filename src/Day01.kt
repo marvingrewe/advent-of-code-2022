@@ -1,32 +1,25 @@
-import kotlin.math.max
 import kotlin.system.measureTimeMillis
 
 fun main() {
-    fun part1(input: List<String>): Int {
-        val (_, max) = input.fold(0 to 0) { (current, max), element ->
-            when (element.isNotEmpty()) {
-                true -> current + element.toInt() to max(current + element.toInt(), max)
-                false -> 0 to max
-            }
-        }
-        return max
-    }
+    val day = "Day01"
 
-    fun part2(input: List<String>): Int {
-        val modifiedInput = input + ""
-        val (_, triple) = modifiedInput.fold(0 to listOf(0, 0, 0)) { (current, currentMax), element ->
-            when (element.isNotEmpty()) {
-                true -> current + element.toInt() to currentMax
-                false -> 0 to listOf(current, *currentMax.toTypedArray()).sorted().drop(1)
-            }
-        }
-        return triple.toList().sum()
-    }
+    fun part1(input: List<String>): Int? = input
+        .joinToString(",")
+        .split(",,")
+        .maxOfOrNull { it.split(",").sumOf(String::toInt) }
 
-    val testInput = readInput("Day01_test")
+    fun part2(input: List<String>): Int = input
+        .joinToString(",")
+        .split(",,")
+        .map { it.split(",").sumOf(String::toInt) }
+        .sortedDescending()
+        .take(3)
+        .sum()
 
-    val input = readInput("Day01")
-    var result: Any
+    val testInput = readInput(day + "_test")
+
+    val input = readInput(day)
+    var result: Any?
 
     println("Test 1 solved in ${measureTimeMillis { result = part1(testInput) }}ms with result: $result, expected: 24000")
     println("Test 2 solved in ${measureTimeMillis { result = part2(testInput) }}ms with result: $result, expected: 45000")
