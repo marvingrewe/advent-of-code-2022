@@ -29,13 +29,9 @@ fun main() {
         else -> error("tja")
     }
 
-    fun part1(input: List<String>): Int {
-        return input.sumOf { row -> matchUpPoints1(row) }
-    }
+    fun part1(input: List<String>): Int = input.sumOf { row -> matchUpPoints1(row) }
 
-    fun part2(input: List<String>): Int {
-        return input.sumOf { row -> matchUpPoints2(row) }
-    }
+    fun part2(input: List<String>): Int = input.sumOf { row -> matchUpPoints2(row) }
 
     val testInput = readInput(day + "_test")
 
